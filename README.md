@@ -3,6 +3,7 @@ Hot Reloading example
 
 ## Start from empty project
 - npm initial `npm init -y`
+- install chokidar-socket-emitter `npm i chokidar-socket-emitter -g`
 - install jspm-server `npm i jspm-server -g`
 - install jspm beta `npm i jspm@beta -D`
 - jspm initial `jspm init -y`
@@ -60,5 +61,7 @@ Hot Reloading example
 - read document carefully [jspm](http://jspm.io)
 
 ## Usage
+- `npm i`
 - `jspm i`
-- `npm start`
+- `chokidar-socket-emitter`
+- open another command line `npm start`
