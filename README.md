@@ -58,10 +58,12 @@ Hot Reloading example
         }
     })
     ```
-- read document carefully [jspm](http://jspm.io)
+- read document carefully [jspm docs](http://jspm.io)
 
 ## Usage
 - `npm i`
 - `jspm i`
+- `npm i jspm-server -g`
+- `npm i chokidar-socket-emitter -g`
 - `chokidar-socket-emitter`
-- open another command line `npm start`
+- open another terminal and type `npm start`
