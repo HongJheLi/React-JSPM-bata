@@ -1,4 +1,4 @@
-# React JSPM bata 
+# React JSPM beta 
 Hot Reloading example
 
 ## Start from empty project
