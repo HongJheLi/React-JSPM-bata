@@ -1,11 +1,28 @@
 SystemJS.config({
+    transpiler: "plugin-babel",
+    packages: {
+        "React_JSPM_bata": {
+            "main": "main.js",
+            "format": "esm",
+            "meta": {
+                "*.js": {
+                    "babelOptions": {
+                        "plugins": [
+                            "babel-plugin-transform-react-jsx"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+});
+
+SystemJS.config({
     packageConfigPaths: [
         "npm:@*/*.json",
         "npm:*.json",
         "github:*/*.json"
     ],
-    transpiler: "plugin-babel",
-
     map: {
         "babel-plugin-transform-react-jsx": "npm:babel-plugin-transform-react-jsx@6.6.0",
         "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
@@ -23,21 +40,7 @@ SystemJS.config({
         "tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
         "util": "github:jspm/nodelibs-util@0.2.0-alpha"
     },
-
     packages: {
-        "React_JSPM_bata": {
-            "main": "main.js",
-            "format": "esm",
-            "meta": {
-                "*.js": {
-                    "babelOptions": {
-                        "plugins": [
-                            "babel-plugin-transform-react-jsx"
-                        ]
-                    }
-                }
-            }
-        },
         "github:capaj/systemjs-hot-reloader@0.5.6": {
             "map": {
                 "debug": "npm:debug@2.2.0",
@@ -53,11 +56,6 @@ SystemJS.config({
         "github:jspm/nodelibs-stream@0.2.0-alpha": {
             "map": {
                 "stream-browserify": "npm:stream-browserify@2.0.1"
-            }
-        },
-        "npm:ansi-styles@2.2.0": {
-            "map": {
-                "color-convert": "npm:color-convert@1.0.0"
             }
         },
         "npm:babel-code-frame@6.6.0": {
@@ -132,7 +130,7 @@ SystemJS.config({
         },
         "npm:chalk@1.1.1": {
             "map": {
-                "ansi-styles": "npm:ansi-styles@2.2.0",
+                "ansi-styles": "npm:ansi-styles@2.2.1",
                 "escape-string-regexp": "npm:escape-string-regexp@1.0.5",
                 "has-ansi": "npm:has-ansi@2.0.0",
                 "strip-ansi": "npm:strip-ansi@3.0.1",
