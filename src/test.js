@@ -1,9 +1,13 @@
 import React, {Component} from 'react'
+import Loging from './loging';
 
 class Test extends Component {
     render() {
         return (
-            <h1>Hello</h1>            
+            <div>
+                <h1 style={{ textAlign: "center" }}>Hello Login</h1>
+                <Loging />
+            </div>
         )
     }
 }
