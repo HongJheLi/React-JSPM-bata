@@ -3,8 +3,8 @@ Hot Reloading example
 
 ## Start from empty project
 - npm initial `npm init -y`
-- install chokidar-socket-emitter `npm i chokidar-socket-emitter -g`
-- install jspm-server `npm i jspm-server -g`
+- install chokidar-socket-emitter `npm i chokidar-socket-emitter -D`
+- install jspm-server `npm i jspm-server -D`
 - install jspm beta `npm i jspm@beta -D`
 - jspm initial `jspm init -y`
 - install react and react-dom `jspm i react react-dom`
@@ -20,41 +20,44 @@ Hot Reloading example
 
     import React from 'react'
     import ReactDOM from 'react-dom'
-    import Test from './src/test'
+    import Test from 'app/test'
 
-    export let component = ReactDOM.render(<Test />, document.getElementById("main"))
+    export let component = ReactDOM.render(React.createElement(Test), document.getElementById("main"))
     ```
-    - Next edit the `jspm.browser.js` file to include `trace: true`, so that it reads:
+    - Next edit the `jspm.config.js` file to include `trace: true`, so that it reads:
     ```json
     SystemJS.config({
-        baseURL: "/",
-        trace: true,
-        paths: {
-            "github:*": "jspm_packages/github/*",
-            "npm:*": "jspm_packages/npm/*",
-            "React_JSPM_bata/": "./"
-        }
-    });
+        browserConfig: {
+            "trace": true,
+            "paths": {
+            "npm:": "/jspm_packages/npm/",
+            "github:": "/jspm_packages/github/",
+            "app/": "/src/"
+            }
+        },
+        ...
+    })
     ```
 - install JSX Babel Plugin `jspm install --dev npm:babel-plugin-transform-react-jsx core-js`
-    - Inside of `jspm.config.js` under the `React_JSPM_bata` packages entry, add this plugin to Babel using package configuration metadata:
+    - Inside of `jspm.config.js` under the `app` packages entry, add this plugin to Babel using package configuration metadata:
     ```json
     SystemJS.config({
         ...
 
         packages: {
-            "jspm-react-component": {
-                "main": "component.js",
-                "format": "esm",
-                "meta": {
-                    "*.js": {
-                        "babelOptions": {
-                            "plugins": ["babel-plugin-transform-react-jsx"]
-                        }
-                    }
+            "app": {
+            "main": "test.js",
+            "meta": {
+                "*.js": {
+                "loader": "plugin-babel",
+                "babelOptions": {
+                    "plugins": [
+                    "babel-plugin-transform-react-jsx"
+                    ]
                 }
-            },
-            ...
+                }
+            }
+            }
         }
     })
     ```
@@ -63,7 +66,4 @@ Hot Reloading example
 ## Usage
 - `npm i`
 - `jspm i`
-- `npm i jspm-server -g`
-- `npm i chokidar-socket-emitter -g`
-- `chokidar-socket-emitter`
-- open another terminal and type `npm start`
+- `npm start`

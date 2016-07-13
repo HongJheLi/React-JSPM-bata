@@ -7,7 +7,6 @@ export function __reload(m) {
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Test from './src/test'
+import Test from 'app/test'
 
-
-export let component = ReactDOM.render(<Test />, document.getElementById("main"))
+export let component = ReactDOM.render(React.createElement(Test), document.getElementById("main"))
